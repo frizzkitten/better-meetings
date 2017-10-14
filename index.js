@@ -18,6 +18,11 @@ app.on('ready', function() {
     slashes: true
   }));
 
+  // quit app on main window close
+  mainWindow.on('closed', function() {
+    app.quit()
+  });
+
   // build menu from template
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   // insert menu
