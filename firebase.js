@@ -9,4 +9,13 @@ var config = {
 };
 firebase.initializeApp(config);
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    console.log(user);
+    console.log('stff');
+  } else {
+    console.log('not logged in');
+  }
+});
+
 module.exports.fbApp = firebase;
