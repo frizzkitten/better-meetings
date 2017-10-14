@@ -23,9 +23,10 @@
 
     const form = $('form');
 
+    // send value of form when add button clicked
     form.submit(function(event) {
-      console.log($('#item').val());
       event.preventDefault();
+      ipcRenderer.send('item:add', $('#item').val())
     });
   </script>
 
