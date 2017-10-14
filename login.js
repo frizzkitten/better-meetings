@@ -22,7 +22,7 @@ signin.addEventListener('click', function() {
   console.log('signin clicked');
 
   fbApp.firebase.auth().signInWithEmailAndPassword(email.value, password.value).then( function() {
-    document.location.href = 'mainWindow.html';
+    document.location.href = 'home.html';
   }).catch(function(err) {
     if (err != null) {
       console.log(err.message);
