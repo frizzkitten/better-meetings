@@ -9,11 +9,13 @@ var config = {
 };
 firebase.initializeApp(config);
 
-exports.firebase = firebase;
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    console.log(user);
+    console.log('stff');
+  } else {
+    console.log('not logged in');
+  }
+});
 
-// dbButton.addEventListener('click', function() {
-//   firebase.database().ref('/users/' + firebase.auth().currentUser.uid).set({
-//     username: 'taco@trello.com',
-//     email: 'taco@trello.com',
-//   });
-// });
+module.exports.fbApp = firebase;
