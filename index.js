@@ -104,3 +104,22 @@ else {
     role: 'close'
   });
 }
+
+if (process.env.NODE_ENV !== 'production') {
+  mainMenuTemplate.push({
+    label: 'Developer Tools',
+    submenu: [
+      {
+        label: 'Toggle Developer Tools',
+        click(item, focusedWindow) {
+          focusedWindow.toggleDevTools();
+        },
+        accelerator: process.platform == 'darwin' ? "Command+I" : "Ctrl+I"
+      },
+      {
+        role: 'reload',
+        accelerator: process.platform == 'darwin' ? "Command+R" : "Ctrl+R"
+      }
+    ]
+  })
+}
