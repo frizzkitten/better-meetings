@@ -12,13 +12,19 @@
 </head>
 <body>
 
-  <div class="left-bar" style="width:300px; height:100px; background-color:blue; align:left; position:absolute;">
+<!-- left menu -->
+<div id="left-menu" style="float:left; width:25%">
+  <!--
+  <div class="left-bar" style="width: 300px; height:100px; background-color:blue;">
     <button class="btn btn-light" style="position:absolute;">Settings</btn>
   </div>
+-->
 
-  <div class="left-bar" style="width:300px; height:400px; background-color:red; align:left; position:absolute; top:100px">
+  <!-- dropdowns -->
+  <div class="left-bar" style="height:400px; background-color:red;">
     <div style="position:relative;">
       <div id="accordion" role="tablist">
+
         <div class="card">
           <div class="card-header" role="tab" id="headingOne">
             <h5 class="mb-0">
@@ -27,23 +33,22 @@
               </a>
             </h5>
           </div>
-
           <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
-
               <div class="row">
-              <div class="col-4" style="max-width:100%; flex:0 0 100%">
-                <div class="list-group" id="list-tab" role="tablist">
-                  <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-                  <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-                  <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-                  <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                <div class="col-4" style="max-width:100%; flex:0 0 100%">
+                  <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                  </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
+
         <div class="card">
           <div class="card-header" role="tab" id="headingTwo">
             <h5 class="mb-0">
@@ -58,6 +63,7 @@
             </div>
           </div>
         </div>
+
         <div class="card">
           <div class="card-header" role="tab" id="headingThree">
             <h5 class="mb-0">
@@ -72,13 +78,28 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
-
   </div>
+</div>
+
 <!-- end of left menu -->
 
+<!-- right area -->
+<div id='right-area' style="
+  background-color: black;
+  width: 25%;
+  height: 300px;
+  float: right;">
 
+  <button class="btn btn-light" style="float:right;">Log Out</btn>
+
+</div>
+<!-- end of right area -->
+
+<!-- main (center) area -->
+<div id='center-area' style="background-color:green; margin: 0 25% 0 25%;">
   <div class="col-8">
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">HA</div>
@@ -88,6 +109,9 @@
     </div>
   </div>
 </div>
+<!-- end of main (center) area -->
+
+
 
 
   <!--<button class='btn btn-success' id='databaseBtn'>send stuff</button>-->
