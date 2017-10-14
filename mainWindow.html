@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
   <title>BetterMeeting</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 </head>
 <body>
 
-  <h1>BasicList</h1>
+  <nav>
+    <div class="nav-wrapper">
+      <a class="brand-logo center">Shopping List</a>
+    </div>
+  </nav>
 
   <ul id="allItems"></ul>
 
@@ -20,16 +25,21 @@
 
     // add one item
     ipcRenderer.on('item:add', function(event, item) {
-      ul.append("<li>" + item + "</li>")
+      ul.addClass('collection');
+      ul.append("<li class='collection-item'>" + item + "</li>");
     });
 
     // clear all items
     ipcRenderer.on('items:clear', function(event) {
       ul.empty();
+      ul.removeClass('collection');
     })
 
     // clear one item
     ul.dblclick(function(event) {
+      if (ul.length == 1) {
+        ul.removeClass('collection');
+      }
       event.target.remove();
     })
   </script>
