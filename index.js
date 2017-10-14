@@ -43,21 +43,15 @@ function createAddWindow() {
     protocol: "file:",
     slashes: true
   }));
+
+  // get rid of window in memory when window closed
+  addWindow.on('closed', function(){
+    addWindow = null;
+  })
 }
 
 // create menu template
 const mainMenuTemplate = [
-  {
-    role: 'window',
-    submenu: [
-      {role: 'minimize'},
-      {
-        label: 'Quit',
-        accelerator: process.platform == 'darwin' ? "Command+Q" : "Ctrl+Q",
-        role: 'close'
-      }
-    ]
-  },
   {
     label: 'File',
     submenu: [
@@ -79,3 +73,34 @@ const mainMenuTemplate = [
     ]
   }
 ];
+
+// returns true if it's the File menu item
+function fileMenuItem(element) {
+  return element.label === 'File';
+}
+
+// if on mac, transfer some File functionality to the Electron menu item
+if (process.platform == 'darwin') {
+  mainMenuTemplate.unshift({
+    role: 'window',
+    submenu: [
+      {role: 'minimize'},
+      {
+        label: 'Quit',
+        accelerator: "Command+Q",
+        role: 'close'
+      }
+    ]
+  })
+}
+// TODO test on non-mac
+// if not mac, add closing to the File menu item
+else {
+  let FileMenuItem = mainMenuTemplate[mainMenuTemplate.findIndex(fileMenuItem)];
+  FileMenuItem.submenu.push({role: 'minimize'})
+  FileMenuItem.submenu.push({
+    label: 'Quit',
+    accelerator: "Ctrl+Q",
+    role: 'close'
+  });
+}
