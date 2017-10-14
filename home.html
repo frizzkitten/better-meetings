@@ -100,7 +100,7 @@
   height: 100vh;
   float: right;">
 
-  <button class="btn btn-light" style="float:right;">Log Out</btn>
+  <button id='signout' class="btn btn-light" style="float:right;">Sign Out</btn>
 
 </div>
 <!-- end of right area -->
@@ -123,47 +123,15 @@
 </div>
 <!-- end of main (center) area -->
 
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" onload="window.$ = window.jQuery = module.exports;" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-    <button class='btn btn-success' id='databaseBtn'>send stuff</button>
-    <button class='btn btn-danger' id='signout'>Sign Out</button>
-  <!-- get jQuery because I need it to live -->
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>-->
-
-  <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" onload="window.$ = window.jQuery = module.exports;" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
-  <script>
-    const electron = require('electron');
-    const {ipcRenderer} = electron;
-    const ul = $("#allItems");
-
-    // add one item
-    ipcRenderer.on('item:add', function(event, item) {
-      ul.addClass('collection');
-      ul.append("<li class='collection-item'>" + item + "</li>");
-    });
-
-    // clear all items
-    ipcRenderer.on('items:clear', function(event) {
-      ul.empty();
-      ul.removeClass('collection');
-    })
-
-    // clear one item
-    ul.dblclick(function(event) {
-      if (ul.length == 1) {
-        ul.removeClass('collection');
-      }
-      event.target.remove();
-    })
-  </script>
-
-  <script>
-     require('./home.js');
-  </script>
+<script>
+   require('./home.js');
+</script>
 
 </body>
 </html>

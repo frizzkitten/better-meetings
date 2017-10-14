@@ -7,13 +7,17 @@ var password = document.getElementById('password');
 
 signup.addEventListener('click', function() {
   console.log('signup clicked');
-  base_module.createUser(email.value, password.value);
-
-  base_module.fbApp.auth().createUserWithEmailAndPassword(email.value, password.value).catch(function(err) {
+  base_module.fbApp.auth().createUserWithEmailAndPassword(email.value, password.value)
+  .catch(function(err) {
     if (err != null) {
       console.log(err.message);
       return;
     }
+  }).then(function() {
+    document.getElementById('email').value = "";
+    document.getElementById('password').value = "";
+    //show user created message
+    $('#userCreated').css({"visibility": "visible"});
   });
 });
 
@@ -28,3 +32,18 @@ signin.addEventListener('click', function() {
     }
   })
 });
+
+
+
+//var working = false;
+// $('#signInBtn').on('click', function(e) {
+//   //actually logging in
+//   base_module.fbApp.auth().signInWithEmailAndPassword(email.value, password.value).then( function() {
+//       document.location.href = 'home.html';
+//     }).catch(function(err) {
+//       if (err != null) {
+//         console.log(err.message);
+//         return;
+//       }
+//     })
+// });
