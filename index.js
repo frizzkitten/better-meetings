@@ -5,14 +5,17 @@ const path = require('path');
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 
 const ON_MAC = process.platform == 'darwin';
-process.env.NODE_ENV = "production";
+process.env.NODE_ENV = "testing";
 
 let mainWindow;
 let addWindow;
 
 app.on('ready', function() {
   // create new window
-  mainWindow = new BrowserWindow({});
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 800
+  });
 
   // load html
   mainWindow.loadURL(url.format({
