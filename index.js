@@ -1,8 +1,11 @@
- const electron = require('electron');
- const url = require('url');
- const path = require('path');
+const electron = require('electron');
+const url = require('url');
+const path = require('path');
 
- const {app, BrowserWindow, Menu, ipcMain} = electron;
+const {app, BrowserWindow, Menu, ipcMain} = electron;
+
+const ON_MAC = process.platform == 'darwin';
+process.env.NODE_ENV = "production";
 
 let mainWindow;
 let addWindow;
@@ -70,14 +73,14 @@ const mainMenuTemplate = [
         click() {
           createAddWindow();
         },
-        accelerator: process.platform == 'darwin' ? "Command+A" : "Ctrl+A"
+        accelerator: ON_MAC ? "Command+A" : "Ctrl+A"
       },
       {
         label: 'Clear Items',
         click() {
           clearItems();
         },
-        accelerator: process.platform == 'darwin' ? "Command+T" : "Ctrl+T"
+        accelerator: ON_MAC ? "Command+T" : "Ctrl+T"
       }
     ]
   },
@@ -97,7 +100,7 @@ function fileMenuItem(element) {
 }
 
 // if on mac, transfer some File functionality to the Electron menu item
-if (process.platform == 'darwin') {
+if (ON_MAC) {
   mainMenuTemplate.unshift({
     role: 'window',
     submenu: [
