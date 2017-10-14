@@ -29,7 +29,18 @@ const mainMenuTemplate = [
     role: 'window',
     submenu: [
       {role: 'minimize'},
-      {role: 'close'}
+      {
+        label: 'Quit',
+        accelerator: process.platform == 'darwin' ? "Command+Q" : "Ctrl+Q",
+        role: 'close'
+      }
+    ]
+  },
+  {
+    label: 'File',
+    submenu: [
+      {label: 'Add Item'},
+      {label: 'Clear Items'}
     ]
   },
   {
