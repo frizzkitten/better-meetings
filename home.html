@@ -12,18 +12,63 @@
 </head>
 <body>
 
-  <nav>
-    <div class="nav-wrapper">
-      <a class="brand-logo center">dafuq</a>
+  <div class="left-bar" style="width:300px; height:100px; background-color:blue; align:left; position:absolute;">
+    <button class="btn btn-light" style="position:absolute;">Settings</btn>
+  </div>
+
+  <div class="left-bar" style="width:300px; height:400px; background-color:red; align:left; position:absolute; top:100px">
+    <div style="position:relative;">
+      <div id="accordion" role="tablist">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Collapsible Group Item #1
+              </a>
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              STUFF
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="headingTwo">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Collapsible Group Item #2
+              </a>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+              MORE STUFF
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="headingThree">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Collapsible Group Item #3
+              </a>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+              LOTS OF STUFF
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </nav>
 
-  <ul id="allItems"></ul>
+  </div>
 
-    <button class='btn btn-success' id='databaseBtn'>send stuff</button>
 
-  <!-- get jQuery because I need it to live -->
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>-->
+  <!--<button class='btn btn-success' id='databaseBtn'>send stuff</button>-->
 
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -32,7 +77,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
   <script>
-    require('./firebase.js');
+
+    //require('./firebase.js');
     const electron = require('electron');
     const {ipcRenderer} = electron;
     const ul = $("#allItems");
