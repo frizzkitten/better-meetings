@@ -9,6 +9,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
 </head>
 <body>
 
@@ -21,7 +22,7 @@
   <ul id="allItems"></ul>
 
     <button class='btn btn-success' id='databaseBtn'>send stuff</button>
-
+    <button class='btn btn-danger' id='signout'>Sign Out</button>
   <!-- get jQuery because I need it to live -->
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>-->
 
@@ -32,7 +33,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
   <script>
-    require('./firebase.js');
     const electron = require('electron');
     const {ipcRenderer} = electron;
     const ul = $("#allItems");
@@ -56,6 +56,10 @@
       }
       event.target.remove();
     })
+  </script>
+
+  <script>
+     require('./home.js');
   </script>
 
 </body>

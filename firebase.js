@@ -9,11 +9,4 @@ var config = {
 };
 firebase.initializeApp(config);
 
-exports.firebase = firebase;
-
-// dbButton.addEventListener('click', function() {
-//   firebase.database().ref('/users/' + firebase.auth().currentUser.uid).set({
-//     username: 'taco@trello.com',
-//     email: 'taco@trello.com',
-//   });
-// });
+module.exports.fbApp = firebase;
