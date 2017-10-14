@@ -7,9 +7,7 @@
 
   <h1>BasicList</h1>
 
-  <ul id="allItems">
-
-  </ul>
+  <ul id="allItems"></ul>
 
 
   <!-- get jQuery because I need it to live -->
@@ -20,14 +18,19 @@
     const {ipcRenderer} = electron;
     const ul = $("#allItems");
 
-    console.log(ul);
-
+    // add one item
     ipcRenderer.on('item:add', function(event, item) {
       ul.append("<li>" + item + "</li>")
     });
 
+    // clear all items
     ipcRenderer.on('items:clear', function(event) {
       ul.empty();
+    })
+
+    // clear one item
+    ul.dblclick(function(event) {
+      event.target.remove();
     })
   </script>
 
