@@ -1,0 +1,22 @@
+{
+  "name": "better-meetings",
+  "version": "1.0.0",
+  "description": "Save time in meetings and keep track of your old ones",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frizzkitten/better-meetings.git"
+  },
+  "author": "The Dirty Debugging Dudes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frizzkitten/better-meetings/issues"
+  },
+  "homepage": "https://github.com/frizzkitten/better-meetings#readme",
+  "dependencies": {
+    "electron": "^1.7.9"
+  }
+}
