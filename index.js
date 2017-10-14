@@ -50,11 +50,14 @@ function createAddWindow() {
   })
 }
 
+function clearItems() {
+  mainWindow.webContents.send('items:clear');
+}
+
 // catch item:add
 ipcMain.on('item:add', function(event, item) {
-  mainWindow.webContents.send('item.add', item);
+  mainWindow.webContents.send('item:add', item);
   addWindow.close();
-  console.log(item);
 });
 
 // create menu template
@@ -69,7 +72,13 @@ const mainMenuTemplate = [
         },
         accelerator: process.platform == 'darwin' ? "Command+A" : "Ctrl+A"
       },
-      {label: 'Clear Items'}
+      {
+        label: 'Clear Items',
+        click() {
+          clearItems();
+        },
+        accelerator: process.platform == 'darwin' ? "Command+T" : "Ctrl+T"
+      }
     ]
   },
   {

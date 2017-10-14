@@ -28,6 +28,13 @@
       event.preventDefault();
       ipcRenderer.send('item:add', $('#item').val())
     });
+
+    $('.input').keypress(function (event) {
+      if (event.which == 13) {
+        form.submit();
+        return false;    //<---- Add this line
+      }
+    });
   </script>
 
 </body>

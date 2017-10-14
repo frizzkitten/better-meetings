@@ -5,14 +5,31 @@
 </head>
 <body>
 
-  <h1>
-    BasicList
-  </h1>
+  <h1>BasicList</h1>
 
+  <ul id="allItems">
 
+  </ul>
 
 
   <!-- get jQuery because I need it to live -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+
+  <script>
+    const electron = require('electron');
+    const {ipcRenderer} = electron;
+    const ul = $("#allItems");
+
+    console.log(ul);
+
+    ipcRenderer.on('item:add', function(event, item) {
+      ul.append("<li>" + item + "</li>")
+    });
+
+    ipcRenderer.on('items:clear', function(event) {
+      ul.empty();
+    })
+  </script>
+
 </body>
 </html>
