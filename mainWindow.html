@@ -14,11 +14,13 @@
 
   <ul id="allItems"></ul>
 
+    <button class='btn btn-success' id='databaseBtn'>send stuff</button>
 
   <!-- get jQuery because I need it to live -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
 
   <script>
+    require('./render.js');
     const electron = require('electron');
     const {ipcRenderer} = electron;
     const ul = $("#allItems");
