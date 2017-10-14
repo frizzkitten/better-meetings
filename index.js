@@ -59,7 +59,8 @@ const mainMenuTemplate = [
         label: 'Add Item',
         click() {
           createAddWindow();
-        }
+        },
+        accelerator: process.platform == 'darwin' ? "Command+A" : "Ctrl+A"
       },
       {label: 'Clear Items'}
     ]
