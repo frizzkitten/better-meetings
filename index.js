@@ -2,7 +2,7 @@
  const url = require('url');
  const path = require('path');
 
- const {app, Browser} = electron;
+ const {app, BrowserWindow} = electron;
 
 let mainWindow;
 
@@ -11,5 +11,9 @@ app.on('ready', function() {
   mainWindow = new BrowserWindow({});
 
   // load html
-  
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, "mainWindow.html"),
+    protocol: "file:",
+    slashes: true
+  }));
 })
