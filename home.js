@@ -11,6 +11,7 @@ var dbBtn = document.getElementById('databaseBtn');
 var database = base_module.fbApp.database();
 
 let accordion = $('#accordion');
+let accordion2 = $('#accordionMiddle');
 let navtabContent = $('#nav-tabContent');
 
 let groups = [];
@@ -34,17 +35,29 @@ let meeting1 = {
     { "Key": 1029, "Name": "Dev" },
     { "Key": 1929, "Name": "Prof Dev" }
   ],
-  "Questions": [
-    {
-      "Key": 110243363240,
-      "Question": "Problems?",
-      "Details": "Worried about profits next term."
-    },
-    {
-      "Key": 114578800,
-      "Question": "Questions for the boss?",
-      "Details": "What does the last quarter mean for our benefits?"
-    },
+  "Parts": [
+    [
+      {
+        "Key": 110243363240,
+        "partString": "Q: Problems? Info: Worried about profits next term."
+      },
+      {
+        "Key": 114578800,
+        "partString": "Q: Questions for the boss? Info: What does the last quarter mean for our benefits?"
+      },
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "Trhansdfp"
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "NOTES HERE"
+      }
+    ]
   ],
   "Insert": "<h3 class='meeting-name'>Sprint 1 Day 1</h3>"
 }
@@ -61,17 +74,29 @@ let meeting2 = {
     { "Key": 10456729, "Name": "Routine" },
     { "Key": 19262229, "Name": "Prof Dev" }
   ],
-  "Questions": [
-    {
-      "Key": 110450987654,
-      "Question": "Problems?",
-      "Details": "None today."
-    },
-    {
-      "Key": 15610206456,
-      "Question": "Any new development ideas?",
-      "Details": "If we could have those reports by Thursday that'd be greaaaaat."
-    },
+  "Parts": [
+    [
+      {
+        "Key": 110450987654,
+        "partString": "Q: Problems? Info: None today."
+      },
+      {
+        "Key": 15610206456,
+        "partString": "Q: Any new development ideas? Info: If we could have those reports by Thursday that'd be greaaaaat."
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "as"
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "NOTw"
+      }
+    ]
   ],
   "Insert": "<h3 class='meeting-name'>Sprint 1 Day 2</h3>"
 }
@@ -87,17 +112,29 @@ let meeting3 = {
     { "Key": 192622345229, "Name": "Dev" },
     { "Key": 192622345229, "Name": "QA" }
   ],
-  "Questions": [
-    {
-      "Key": 110455555,
-      "Question": "Problems?",
-      "Details": "Lots of them."
-    },
-    {
-      "Key": 123453450,
-      "Question": "What time is it?",
-      "Details": "Not the ideal one."
-    },
+  "Parts": [
+    [
+      {
+        "Key": 110455555,
+        "partString": "Q: Problems? Info: Lots of them."
+      },
+      {
+        "Key": 123453450,
+        "partString": "Q: What time is it? Info: Not the ideal one."
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "as"
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "NOTw"
+      }
+    ]
   ],
   "Insert": "<h3 class='meeting-name'>Sprint 1 Day 3</h3>"
 }
@@ -113,17 +150,29 @@ let meeting4 = {
     { "Key": 1029, "Name": "Dev" },
     { "Key": 1929, "Name": "Prof Dev" }
   ],
-  "Questions": [
-    {
-      "Key": 110243363240,
-      "Question": "Problems?",
-      "Details": "Worried about profits next term."
-    },
-    {
-      "Key": 114578800,
-      "Question": "Questions for the boss?",
-      "Details": "What does the last quarter mean for our benefits?"
-    },
+  "Parts": [
+    [
+      {
+        "Key": 110243363240,
+        "partString": "Q: Problems? Info: Worried about profits next term."
+      },
+      {
+        "Key": 114578800,
+        "partString": "Q: Questions for the boss? Info: What does the last quarter mean for our benefits?"
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "as"
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "NOTw"
+      }
+    ]
   ],
   "Insert": "<h3 class='meeting-name'>Dude, Where's My Car?</h3>"
 }
@@ -139,17 +188,31 @@ let meeting5 = {
     { "Key": 104562345729, "Name": "Routine" },
     { "Key": 192623452229, "Name": "Dev" }
   ],
-  "Questions": [
-    {
-      "Key": 110453450987654,
-      "Question": "How much longer do we need until we're in the black?",
-      "Details": "Between 10 days and 13 years."
-    },
-    {
-      "Key": 156102334506456,
-      "Question": "Any new development ideas?",
-      "Details": "Mars on the Moon 2065."
-    },
+  "Parts": [
+    [
+      {
+        "Key": 110453450987654,
+        "Question": "How much longer do we need until we're in the black?",
+        "Details": "Between 10 days and 13 years."
+      },
+      {
+        "Key": 156102334506456,
+        "Question": "Any new development ideas?",
+        "Details": "Mars on the Moon 2065."
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "as"
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "NOTw"
+      }
+    ]
   ],
   "Insert": "<h3 class='meeting-name'>Does Tina Even Lift?</h3>"
 }
@@ -165,17 +228,31 @@ let meeting6 = {
     { "Key": 19262234345229, "Name": "Dev" },
     { "Key": 1926223345229, "Name": "QA" }
   ],
-  "Questions": [
-    {
-      "Key": 1104523455555,
-      "Question": "How could we do better next time?",
-      "Details": "Better commmunication."
-    },
-    {
-      "Key": 1234543253450,
-      "Question": "Yellow Is the New Gray",
-      "Details": "Meh, Tournament of Chairs is better."
-    },
+  "Parts": [
+    [
+      {
+        "Key": 1104523455555,
+        "Question": "How could we do better next time?",
+        "Details": "Better commmunication."
+      },
+      {
+        "Key": 1234543253450,
+        "Question": "Yellow Is the New Gray",
+        "Details": "Meh, Tournament of Chairs is better."
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "as"
+      }
+    ],
+    [
+      {
+        "Key": 110243363240,
+        "partString": "NOTw"
+      }
+    ]
   ],
   "Insert": "<h3 class='meeting-name'>The Implications of McDungle</h3>"
 }
@@ -276,10 +353,6 @@ function putGroupsInDOM() {
 
     accordion.append(groupHTML);
   }
-}
-
-function putInfoIntoDomForMeeting() {
-
 }
 
 
@@ -409,14 +482,52 @@ $('.CLICKME').click(function(event) {
   let insertHTML = "<h3 class='meeting-name'>" + NAME + "</h3></div>";
   navtabContent.append(insertHTML);
 
+  //TQAOPISDJG
   for (let tIndex = 0; tIndex < MEETING.Tags.length; tIndex++) {
     $(".tags").append("<li><span class='badge badge-pill badge-info' style='background-color:#2196F3'>" + MEETING.Tags[tIndex].Name + "</span></li>");
   }
 
+  // MEM ERSSER
   for (let tIndex = 0; tIndex < MEETING.Members.length; tIndex++) {
     $(".members").append("<li><span class='badge badge-pill badge-info' style='background-color:#2196F3'>" + MEETING.Members[tIndex].Name + "</span></li>");
   }
 
+  // get everything in the center part
+  // let parts = MEETING.Parts;
+  // console.log(parts);
+  //
+  // for (let partIdx = 0; partIdx < parts.length; partIdx++) {
+  //   let part = parts[partIdx];
+  //
+  //   let partHTML = "";
+  //
+  //   let partPreNameHTML = "<div class='card'>" +
+  //     "<div class='card-header' role='tab' id='heading" + part.Key + "'>" +
+  //       "<h5 class='mb-0'>" +
+  //         "<a data-toggle='collapse' href='#collapse" + part.Key + "' aria-expanded='true' aria-controls='collapse" + part.Key + "'>"
+  //
+  //   let partMiddleHTML = "</a></h5></div>" +
+  //       "<div id='collapse" + part.Key + "' class='collapse' role='tabpanel' aria-labelledby='heading" + part.Key + "' data-parent='#accordionMiddle'>" +
+  //         "<div class='card-body'><div class='row'><div class='col-4' style='max-width:100%; flex:0 0 100%'>" +
+  //               "<div class='list-group' id='list-tab' role='tablist'>"
+  //
+  //   let currPartMeetingsHTML = "";
+  //
+  //   console.log(part);
+  //
+  //   for (let miniPartIdx = 0; miniPartIdx < part.length; miniParIdx++) {
+  //     let minipart = part[minipartIdx][meetingIdx];
+  //     let meetingHTML = "<a class='list-group-item list-group-item-action active CLICKME' id='" + partIndex + meetingIdx + "' data-toggle='list' href='#list-" + meeting.Key + "' role='tab' aria-controls='" + meeting.Key + "'>" + meeting.Name + "</a>";
+  //     currPartMeetingsHTML = currPartMeetingsHTML + meetingHTML;
+  //   }
+  //
+  //   let partEndHTML = "</div></div></div></div></div></div>"
+  //
+  //   // add the part to the list
+  //   partHTML= partPreNameHTML + group.Name + partMiddleHTML + currPartMeetingsHTML + partEndHTML;
+  //
+  //   accordion2.append(partHTML);
+  // }
 
 });
 
