@@ -104,10 +104,12 @@ function putGroupsInDOM() {
   }
 }
 
+function putMeetingsInDOM() {
 
+}
 
 putGroupsInDOM();
-//putMeetingsInDOM();
+putMeetingsInDOM();
 
 
 // end putting into DOM
