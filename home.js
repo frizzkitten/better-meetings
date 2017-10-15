@@ -278,6 +278,11 @@ function putGroupsInDOM() {
   }
 }
 
+function putInfoIntoDomForMeeting() {
+
+}
+
+
 function putMeetingsInDOM() {
   insertHTML = "";
 
@@ -391,7 +396,8 @@ function addMeetingToGroup(meetingKey, groupKey) {
 };
 
 $('.CLICKME').click(function(event) {
-  $("#nav-tabContent").empty();
+  $("#nav-tabContent, .members, .tags").empty();
+
   console.log(this);
   console.log($(this).attr('id'))
 
@@ -402,6 +408,16 @@ $('.CLICKME').click(function(event) {
 
   let insertHTML = "<h3 class='meeting-name'>" + NAME + "</h3></div>";
   navtabContent.append(insertHTML);
+
+  for (let tIndex = 0; tIndex < MEETING.Tags.length; tIndex++) {
+    $(".tags").append("<li><span class='badge badge-pill badge-info' style='background-color:#2196F3'>" + MEETING.Tags[tIndex].Name + "</span></li>");
+  }
+
+  for (let tIndex = 0; tIndex < MEETING.Members.length; tIndex++) {
+    $(".members").append("<li><span class='badge badge-pill badge-info' style='background-color:#2196F3'>" + MEETING.Members[tIndex].Name + "</span></li>");
+  }
+
+
 });
 
 
