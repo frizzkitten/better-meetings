@@ -5,7 +5,18 @@ body {
   background: url("https://i.imgur.com/HgflTDf.jpg") 50% fixed;
 }
 
+#login-wrapper {
+  display: flex;
+  padding: 20px;
+}
 
+#home-wrapper {
+
+}
+
+.meeting-name {
+  color: white;
+}
 
 @keyframes spinner {
   0% {
