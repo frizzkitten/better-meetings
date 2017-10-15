@@ -13,8 +13,11 @@ var database = base_module.fbApp.database();
 let accordion = $('#accordion');
 let navtabContent = $('#nav-tabContent');
 
-let groups = []
+let groups = [];
 
+let currentClicked = {};
+let possibleClickings = [];
+let toInsert = "<h3 class='meeting-name'>" + "Sprint 1 Day 1" + "</h3></div>"
 
 //fetching functions
 
@@ -44,6 +47,7 @@ let meeting1 = {
     },
   ]
 }
+currentClicked = meeting1;
 let meeting2 = {
   "Name": "Sprint 1 Day 2",
   "Key": 9912345899,
@@ -194,6 +198,7 @@ function fetchAllGroups() {
       ]
     }
   ];
+  possibleClickings = [meeting1, meeting2, meeting3, meeting4, meeting5, meeting6]
   return groups;
 }
 
@@ -284,7 +289,7 @@ function putMeetingsInDOM() {
 }
 
 putGroupsInDOM();
-putMeetingsInDOM();
+//putMeetingsInDOM();
 
 
 // end putting into DOM
