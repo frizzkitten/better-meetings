@@ -61,16 +61,16 @@ function fetchMeetingFromKey(key) {
   }
 }
 
-//end fetching functions
+// end fetching functions
+
+// uploading functions
 
 
 
 
 
 
-
-
-
+// end uploading functions
 
 function addMeeting(name) {
   var key = database.ref().child('meetings').push().key;
