@@ -5,6 +5,10 @@ body {
   background: url("https://i.imgur.com/HgflTDf.jpg") 50% fixed;
 }
 
+.list-group-item.active{
+  background-color: #2196F3 !important;
+}
+
 #login-wrapper {
   display: flex;
   padding: 20px;
