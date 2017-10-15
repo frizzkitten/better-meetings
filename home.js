@@ -23,11 +23,10 @@ function addMeeting(name) {
 
 
 function getMeetingQuestions(meetingKey) {
-  var ref = database.ref(meetingsRef + meetingKey + 'questions');
-  var questions = ref.limitToLast(10);
-  console.log('questions' );
-  // This doesn't work as expected
-  console.log(questions);
+  var ref = database.ref(meetingsRef + meetingKey + '/questions');
+  ref.limitToLast(10).on('child_added', function(snapshot) {
+    console.log(snapshot.key + snapshot.child('details').key);
+  });
 };
 
 
