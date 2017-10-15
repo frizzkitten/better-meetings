@@ -30,7 +30,13 @@ signin.addEventListener('click', function() {
   })
 });
 
-
+// Press enter to login
+$(document).keypress(function(e) {
+  if (e.which == 13) {
+    console.log('enter pressed');
+    $('#signInBtn').click();
+  }
+})
 
 //var working = false;
 // $('#signInBtn').on('click', function(e) {
