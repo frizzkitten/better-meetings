@@ -7,14 +7,15 @@
 
  <title>BetterMeeting</title>
 
+  <link rel="stylesheet" href="style.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
 </head>
-<body>
-
+<body id="home-body">
+<div class="wrapper">
 <!-- left menu -->
-<div id="left-menu" style="float:left; width:25%; height:100vh; background-color:red;">
+<div id="left-menu" style="float:left; width:25%; height:100vh; border-right:1px solid lightblue;">
 
   <!-- dropdowns -->
   <div class="left-bar">
@@ -95,18 +96,38 @@
 
 <!-- right area -->
 <div id='right-area' style="
-  background-color: black;
   width: 25%;
   height: 100vh;
-  float: right;">
+  float: right;
+  border-left:1px solid lightblue;">
 
-  <button id='signout' class="btn btn-light" style="float:right;">Sign Out</btn>
+  <button id='signout' class="btn btn-light" style="float:right;">Sign Out</button>
+
+  <ul class="tags">
+    <li>
+      <span class="badge badge-pill badge-info" style="background-color:#2196F3">Dev</span>
+    </li>
+    <li>
+      <span class="badge badge-pill badge-info" style="background-color:#2196F3">QA</span>
+    </li>
+    <li>
+      <span class="badge badge-pill badge-info" style="background-color:#2196F3">Prod Release</span>
+    </li>
+  </ul>
+
+  <div class='login' style="padding: 0 0 50px 0; margin-left:10%; width:80%">
+    <input type="password" id='password' placeholder="New tag" style="padding: 10px 5px 5px 5px; margin-bottom:-10px"/>
+      <i class="fa fa-key"></i>
+    <button id='signInBtn' style="width:100%; border-radius: 0 0 5px 5px; max-height:40px">
+        <span class="state">Log in</span>
+    </button>
+  </div>
 
 </div>
 <!-- end of right area -->
 
 <!-- main (center) area -->
-<div id='center-area' style="background-color:green; margin: 0 25% 0 25%; height:100vh">
+<div id='center-area' style="margin: 0 25% 0 25%; height:100vh;">
   <div class="col-8">
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="list-1" role="tabpanel" aria-labelledby="list-1-list">HA</div>
@@ -122,7 +143,7 @@
   </div>
 </div>
 <!-- end of main (center) area -->
-
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" onload="window.$ = window.jQuery = module.exports;" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

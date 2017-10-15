@@ -1,9 +1,11 @@
 body {
   font-family: "Open Sans", sans-serif;
   height: 100vh;
-  background: url("https://i.imgur.com/HgflTDf.jpg") 50% fixed;
   background-size: cover;
+  background: url("https://i.imgur.com/HgflTDf.jpg") 50% fixed;
 }
+
+
 
 @keyframes spinner {
   0% {
@@ -18,13 +20,11 @@ body {
 }
 
 .wrapper {
-  display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   min-height: 100%;
-  padding: 20px;
   background: rgba(4, 40, 68, 0.85);
 }
 
@@ -99,6 +99,21 @@ body {
   margin: 10px 0 30px 0;
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
+}
+
+.badge badge-pill badge-info {
+  background-color: #2196F3;
+}
+
+.tags {
+  text-align: center;
+  clear: right;
+  padding-left: 0px;
+  margin-top: 80px;
+}
+
+.tags li {
+  list-style-type: none;
 }
 
 #signInBtn {
