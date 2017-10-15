@@ -120,14 +120,15 @@ body {
   background-color: #2196F3;
 }
 
-.tags {
+.tags, .members {
   text-align: center;
   clear: right;
   padding-left: 0px;
   margin-top: 80px;
 }
 
-.tags li {
+.tags li,
+.members li {
   list-style-type: none;
 }
 
