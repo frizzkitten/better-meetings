@@ -16,7 +16,7 @@ let navtabContent = $('#nav-tabContent');
 let groups = [];
 
 let currentClicked = {};
-let possibleClickings = [];
+let possibleClickings = {};
 let toInsert = "<h3 class='meeting-name'>" + "Sprint 1 Day 1" + "</h3></div>"
 
 //fetching functions
@@ -45,7 +45,8 @@ let meeting1 = {
       "Question": "Questions for the boss?",
       "Details": "What does the last quarter mean for our benefits?"
     },
-  ]
+  ],
+  "Insert": "<h3 class='meeting-name'>Sprint 1 Day 1</h3>"
 }
 currentClicked = meeting1;
 let meeting2 = {
@@ -71,7 +72,8 @@ let meeting2 = {
       "Question": "Any new development ideas?",
       "Details": "If we could have those reports by Thursday that'd be greaaaaat."
     },
-  ]
+  ],
+  "Insert": "<h3 class='meeting-name'>Sprint 1 Day 2</h3>"
 }
 let meeting3 = {
   "Name": "Sprint 1 Day 3",
@@ -96,7 +98,8 @@ let meeting3 = {
       "Question": "What time is it?",
       "Details": "Not the ideal one."
     },
-  ]
+  ],
+  "Insert": "<h3 class='meeting-name'>Sprint 1 Day 3</h3>"
 }
 let meeting4 = {
   "Name": "Dude, Where's my Car?",
@@ -121,7 +124,8 @@ let meeting4 = {
       "Question": "Questions for the boss?",
       "Details": "What does the last quarter mean for our benefits?"
     },
-  ]
+  ],
+  "Insert": "<h3 class='meeting-name'>Dude, Where's My Car?</h3>"
 }
 let meeting5 = {
   "Name": "Does Tina Even Lift?",
@@ -146,7 +150,8 @@ let meeting5 = {
       "Question": "Any new development ideas?",
       "Details": "Mars on the Moon 2065."
     },
-  ]
+  ],
+  "Insert": "<h3 class='meeting-name'>Does Tina Even Lift?</h3>"
 }
 let meeting6 = {
   "Name": "The Implications of McDungle",
@@ -171,7 +176,8 @@ let meeting6 = {
       "Question": "Yellow Is the New Gray",
       "Details": "Meh, Tournament of Chairs is better."
     },
-  ]
+  ],
+  "Insert": "<h3 class='meeting-name'>The Implications of McDungle</h3>"
 }
 
 
@@ -198,7 +204,7 @@ function fetchAllGroups() {
       ]
     }
   ];
-  possibleClickings = [meeting1, meeting2, meeting3, meeting4, meeting5, meeting6]
+  possibleClickings = { "00": meeting1, "01": meeting2, "02": meeting3, "10": meeting4, "11": meeting5, "12": meeting6 };
   return groups;
 }
 
@@ -259,7 +265,7 @@ function putGroupsInDOM() {
 
     for (let meetingIdx = 0; meetingIdx < group.MeetingKeyNames.length; meetingIdx++) {
       let meeting = group.MeetingKeyNames[meetingIdx];
-      let meetingHTML = "<a class='list-group-item list-group-item-action active' id='list-" + meeting.Key + "-list' data-toggle='list' href='#list-" + meeting.Key + "' role='tab' aria-controls='" + meeting.Key + "'>" + meeting.Name + "</a>";
+      let meetingHTML = "<a class='list-group-item list-group-item-action active CLICKME' id='" + groupIdx + meetingIdx + "' data-toggle='list' href='#list-" + meeting.Key + "' role='tab' aria-controls='" + meeting.Key + "'>" + meeting.Name + "</a>";
       currGroupMeetingsHTML = currGroupMeetingsHTML + meetingHTML;
     }
 
@@ -383,6 +389,20 @@ function addMeetingToGroup(meetingKey, groupKey) {
     group: groupKey
   });
 };
+
+$('.CLICKME').click(function(event) {
+  $("#nav-tabContent").empty();
+  console.log(this);
+  console.log($(this).attr('id'))
+
+  let THING = $(this).attr('id');
+  let MEETING = possibleClickings[THING];
+  console.log(MEETING)
+  let NAME = MEETING.Name;
+
+  let insertHTML = "<h3 class='meeting-name'>" + NAME + "</h3></div>";
+  navtabContent.append(insertHTML);
+});
 
 
 
