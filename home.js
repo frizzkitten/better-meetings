@@ -190,22 +190,22 @@ signout.addEventListener('click', function() {
 });
 
 
-dbBtn.addEventListener('click', function() {
-  var meetingKey = addMeeting('meeting');
-  addMeeting('meeting2');
-  addMeeting('meeting3');
-  var meetings = database.ref(meetingsRef);
-  meetings.orderByChild('key').on('child_added', function(data) {
-    console.log(data.val().name + ' ' + data.val());
-  });
-
-  var groupKey = addGroup('FunTimes');
-  addMeetingToGroup(meetingKey, groupKey);
-  var tags = ['taco', 'burrito', 'girls'];
-  var date = '1010203';
-  var uids = ['123', '456'];
-  updateMeetingInfo(meetingKey, uids, date, tags);
-  addQuestion(meetingKey, 'question and answer', 'deails');
-  addQuestion(meetingKey, 'second question', 'stuff here');
-  getMeetingQuestions(meetingKey);
-});
+// dbBtn.addEventListener('click', function() {
+//   var meetingKey = addMeeting('meeting');
+//   addMeeting('meeting2');
+//   addMeeting('meeting3');
+//   var meetings = database.ref(meetingsRef);
+//   meetings.orderByChild('key').on('child_added', function(data) {
+//     console.log(data.val().name + ' ' + data.val());
+//   });
+//
+//   var groupKey = addGroup('FunTimes');
+//   addMeetingToGroup(meetingKey, groupKey);
+//   var tags = ['taco', 'burrito', 'girls'];
+//   var date = '1010203';
+//   var uids = ['123', '456'];
+//   updateMeetingInfo(meetingKey, uids, date, tags);
+//   addQuestion(meetingKey, 'question and answer', 'deails');
+//   addQuestion(meetingKey, 'second question', 'stuff here');
+//   getMeetingQuestions(meetingKey);
+// });
