@@ -7,14 +7,15 @@
 
  <title>BetterMeeting</title>
 
+  <link rel="stylesheet" href="style.css">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
 </head>
-<body>
-
+<body id="home-body">
+<div class="wrapper" id='home-wrapper'>
 <!-- left menu -->
-<div id="left-menu" style="float:left; width:25%; height:100vh; background-color:red;">
+<div id="left-menu" style="float:left; width:25%; height:100vh; border-right:1px solid lightblue;">
 
   <!-- dropdowns -->
   <div class="left-bar">
@@ -34,7 +35,7 @@
               <div class="row">
                 <div class="col-4" style="max-width:100%; flex:0 0 100%">
                   <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-1-list" data-toggle="list" href="#list-1" role="tab" aria-controls="1">1</a>
+                    <a class="list-group-item list-group-item-action active" id="list-1-list" data-toggle="list" href="#list-1" role="tab" aria-controls="1">Blonde vs Brunette: Kevin is Wrong</a>
                     <a class="list-group-item list-group-item-action" id="list-2-list" data-toggle="list" href="#list-2" role="tab" aria-controls="2">2</a>
                     <a class="list-group-item list-group-item-action" id="list-3-list" data-toggle="list" href="#list-3" role="tab" aria-controls="3">3</a>
                     <a class="list-group-item list-group-item-action" id="list-4-list" data-toggle="list" href="#list-4" role="tab" aria-controls="4">4</a>
@@ -95,21 +96,43 @@
 
 <!-- right area -->
 <div id='right-area' style="
-  background-color: black;
   width: 25%;
   height: 100vh;
-  float: right;">
+  float: right;
+  border-left:1px solid lightblue;">
 
-  <button class="btn btn-light" style="float:right;">Log Out</btn>
+  <button id='signout' class="btn btn-light" style="float:right;">Sign Out</button>
+
+  <ul class="tags">
+    <li>
+      <span class="badge badge-pill badge-info" style="background-color:#2196F3">Dev</span>
+    </li>
+    <li>
+      <span class="badge badge-pill badge-info" style="background-color:#2196F3">QA</span>
+    </li>
+    <li>
+      <span class="badge badge-pill badge-info" style="background-color:#2196F3">Prod Release</span>
+    </li>
+  </ul>
+
+  <div class='login' style="padding: 0 0 50px 0; margin-left:10%; width:80%">
+    <input type="password" id='password' placeholder="New tag" style="padding: 10px 5px 5px 5px; margin-bottom:-10px"/>
+      <i class="fa fa-key"></i>
+    <button id='signInBtn' style="width:100%; border-radius: 0 0 5px 5px; max-height:40px">
+        <span class="state">Log in</span>
+    </button>
+  </div>
 
 </div>
 <!-- end of right area -->
 
 <!-- main (center) area -->
-<div id='center-area' style="background-color:green; margin: 0 25% 0 25%; height:100vh">
-  <div class="col-8">
+<div id='center-area' style="margin: 0 25% 0 25%; height:100vh;">
+  <div class="col-12">
     <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-1" role="tabpanel" aria-labelledby="list-1-list">HA</div>
+      <div class="tab-pane fade show active" id="list-1" role="tabpanel" aria-labelledby="list-1-list">
+        <h3 class="meeting-name">Blonde vs Brunette: Kevin is Wrong</h3>
+      </div>
       <div class="tab-pane fade" id="list-2" role="tabpanel" aria-labelledby="list-2-list">.HAA</div>
       <div class="tab-pane fade" id="list-3" role="tabpanel" aria-labelledby="list-3-list">.SDFSDF.</div>
       <div class="tab-pane fade" id="list-4" role="tabpanel" aria-labelledby="list-4-list">...</div>
@@ -122,48 +145,16 @@
   </div>
 </div>
 <!-- end of main (center) area -->
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" onload="window.$ = window.jQuery = module.exports;" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
-
-    <button class='btn btn-success' id='databaseBtn'>send stuff</button>
-    <button class='btn btn-danger' id='signout'>Sign Out</button>
-  <!-- get jQuery because I need it to live -->
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>-->
-
-  <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" onload="window.$ = window.jQuery = module.exports;" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
-  <script>
-    const electron = require('electron');
-    const {ipcRenderer} = electron;
-    const ul = $("#allItems");
-
-    // add one item
-    ipcRenderer.on('item:add', function(event, item) {
-      ul.addClass('collection');
-      ul.append("<li class='collection-item'>" + item + "</li>");
-    });
-
-    // clear all items
-    ipcRenderer.on('items:clear', function(event) {
-      ul.empty();
-      ul.removeClass('collection');
-    })
-
-    // clear one item
-    ul.dblclick(function(event) {
-      if (ul.length == 1) {
-        ul.removeClass('collection');
-      }
-      event.target.remove();
-    })
-  </script>
-
-  <script>
-     require('./home.js');
-  </script>
+<script>
+   require('./home.js');
+</script>
 
 </body>
 </html>
