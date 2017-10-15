@@ -19,21 +19,31 @@ function addMeeting(name) {
   return key;
 };
 
-// function updateMeetingInfo(meetingKey, memberUids, date, tags) {
-//   var ref = database.ref(meetingsRef + meetingKey);
-//   if (memberUids) {
-//
-//   }
-//
-//   // Trim to ignore if string empty OR whitespaces
-//   if (date.trim()) {
-//     meeting.update({
-//
-//     })
-//   }
-//
-//
-// };
+
+function updateMeetingInfo(meetingKey, memberUids, date, tags) {
+  var ref = database.ref(meetingsRef + meetingKey);
+  if (memberUids) {
+    for (uid in memberUids) {
+      ref.child('members').update({
+        [memberUids[uid]]: true
+      });
+    }
+  }
+  // Trim to ignore if string empty OR whitespaces
+  if (date.trim()) {
+    ref.update({
+      date: date
+    });
+  }
+  if (tags) {
+    for (tag in tags) {
+      ref.child('tags/').update({
+        [tags[tag]]: true
+      });
+    }
+  }
+};
+
 
 function addGroup(name) {
   var key = database.ref().child('groups').push().key;
@@ -89,4 +99,8 @@ dbBtn.addEventListener('click', function() {
 
   var groupKey = addGroup('FunTimes');
   addMeetingToGroup(meetingKey, groupKey);
+  var tags = ['taco', 'burrito', 'girls'];
+  var date = '1010203';
+  var uids = ['123', '456'];
+  updateMeetingInfo(meetingKey, uids, date, tags);
 });
