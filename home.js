@@ -1,7 +1,8 @@
 const base_module = require('./firebase');
 
-var meetingsRef = '/meetings/'
-var groupsRef = '/groups/'
+var meetingsRef = '/meetings/';
+var groupsRef = '/groups/';
+var questionsRef = '/questions/';
 var signout = document.getElementById('signout');
 var dbBtn = document.getElementById('databaseBtn');
 var database = base_module.fbApp.database();
@@ -13,27 +14,63 @@ function addMeeting(name) {
     group: '',
     members: '',
     date: '',
-    tags: []
+    tags: '',
+    questions: ''
   });
 
   return key;
 };
 
-// function updateMeetingInfo(meetingKey, memberUids, date, tags) {
-//   var ref = database.ref(meetingsRef + meetingKey);
-//   if (memberUids) {
-//
-//   }
-//
-//   // Trim to ignore if string empty OR whitespaces
-//   if (date.trim()) {
-//     meeting.update({
-//
-//     })
-//   }
-//
-//
-// };
+
+function getMeetingQuestions(meetingKey) {
+  var ref = database.ref(meetingsRef + meetingKey + 'questions');
+  var questions = ref.limitToLast(10);
+  console.log('questions' );
+  // This doesn't work as expected
+  console.log(questions);
+};
+
+
+function addQuestion(meetingKey, question, details) {
+  var key = database.ref().child('questions').push().key;
+  database.ref(questionsRef + key).set({
+    question: question,
+    details: details,
+    meeting: meetingKey
+  });
+
+  // Add question to meeting limit
+  var ref = database.ref(meetingsRef + meetingKey);
+  ref.child('questions').update({
+    [key]: true
+  });
+};
+
+
+function updateMeetingInfo(meetingKey, memberUids, date, tags) {
+  var ref = database.ref(meetingsRef + meetingKey);
+  if (memberUids) {
+    for (uid in memberUids) {
+      ref.child('members').update({
+        [memberUids[uid]]: true
+      });
+    }
+  }
+  // Trim to ignore if string empty OR whitespaces
+  if (date.trim()) {
+    ref.update({
+      date: date
+    });
+  }
+  if (tags) {
+    for (tag in tags) {
+      ref.child('tags/').update({
+        [tags[tag]]: true
+      });
+    }
+  }
+};
+
 
 function addGroup(name) {
   var key = database.ref().child('groups').push().key;
@@ -89,4 +126,10 @@ dbBtn.addEventListener('click', function() {
 
   var groupKey = addGroup('FunTimes');
   addMeetingToGroup(meetingKey, groupKey);
+  var tags = ['taco', 'burrito', 'girls'];
+  var date = '1010203';
+  var uids = ['123', '456'];
+  updateMeetingInfo(meetingKey, uids, date, tags);
+  addQuestion(meetingKey, 'question and answer', 'deails');
+  getMeetingQuestions(meetingKey);
 });
