@@ -88,10 +88,21 @@ function addMeeting(name) {
 
 
 function getMeetingQuestions(meetingKey) {
-  var ref = database.ref(meetingsRef + meetingKey + '/questions');
-  ref.limitToLast(10).on('child_added', function(snapshot) {
-    console.log(snapshot.key + snapshot.child('details').key);
+  console.log('getting meeting questions')
+  var questions = [];
+  var query = database.ref(meetingsRef + meetingKey + '/questions');
+  query.once('value').then(function(snapshot){
+    snapshot.forEach(function(childsnapshot) {
+      console.log(childsnapshot.key);
+      console.log(childsnapshot.val());
+    })
   });
+    // questions.push({
+    //   meetingKey:,
+    //   question:;
+    //   details:
+    // });
+//  });
 };
 
 
@@ -195,5 +206,6 @@ dbBtn.addEventListener('click', function() {
   var uids = ['123', '456'];
   updateMeetingInfo(meetingKey, uids, date, tags);
   addQuestion(meetingKey, 'question and answer', 'deails');
+  addQuestion(meetingKey, 'second question', 'stuff here');
   getMeetingQuestions(meetingKey);
 });
