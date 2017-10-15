@@ -1,7 +1,8 @@
 const base_module = require('./firebase');
 
-var meetingsRef = '/meetings/'
-var groupsRef = '/groups/'
+var meetingsRef = '/meetings/';
+var groupsRef = '/groups/';
+var questionsRef = '/questions/';
 var signout = document.getElementById('signout');
 var dbBtn = document.getElementById('databaseBtn');
 var database = base_module.fbApp.database();
@@ -13,10 +14,36 @@ function addMeeting(name) {
     group: '',
     members: '',
     date: '',
-    tags: []
+    tags: '',
+    questions: ''
   });
 
   return key;
+};
+
+
+function getMeetingQuestions(meetingKey) {
+  var ref = database.ref(meetingsRef + meetingKey + 'questions');
+  var questions = ref.limitToLast(10);
+  console.log('questions' );
+  // This doesn't work as expected
+  console.log(questions);
+};
+
+
+function addQuestion(meetingKey, question, details) {
+  var key = database.ref().child('questions').push().key;
+  database.ref(questionsRef + key).set({
+    question: question,
+    details: details,
+    meeting: meetingKey
+  });
+
+  // Add question to meeting limit
+  var ref = database.ref(meetingsRef + meetingKey);
+  ref.child('questions').update({
+    [key]: true
+  });
 };
 
 
@@ -103,4 +130,6 @@ dbBtn.addEventListener('click', function() {
   var date = '1010203';
   var uids = ['123', '456'];
   updateMeetingInfo(meetingKey, uids, date, tags);
+  addQuestion(meetingKey, 'question and answer', 'deails');
+  getMeetingQuestions(meetingKey);
 });
